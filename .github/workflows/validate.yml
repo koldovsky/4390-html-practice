@@ -20,8 +20,8 @@ jobs:
     - name: Install HTML Proofer
       run: gem install html-proofer
 
-    - name: Run HTML Proofer (links ignored)
+    - name: Run HTML Proofer
       run: |
         for file in $(find . -maxdepth 1 -iname "*.html"); do
-          htmlproofer "$file" --checks-to-ignore Links
+          htmlproofer $file --disable-external --ignore-urls "/#/"
         done
